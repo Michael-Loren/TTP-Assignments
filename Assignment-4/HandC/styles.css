@@ -51,6 +51,15 @@ button {
 button:hover{
     filter: brightness(90%);   
 }
+
 button:active{
     filter:brightness(100%);
+}
+
+footer p {
+    border-style: solid;
+}
+
+#subtext {
+    font-size: 1rem;
 }
