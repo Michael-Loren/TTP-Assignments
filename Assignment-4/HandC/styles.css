@@ -35,8 +35,7 @@ section.sub.bottom{
 }
 
 section.sub.bottom p {
-    font-size: 5rem;
-    font-style: var(test);
+    font-size: 3rem;
     margin: auto;
 }
 
