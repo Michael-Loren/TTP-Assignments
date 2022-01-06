@@ -14,10 +14,11 @@ body {
     align-content: center;
     
 }
-.container section {
+section {
     width: 50%;
     height: 70%;
     display: flex;
+    flex-wrap: wrap;
 }
 .right{
     background-color: royalblue;
