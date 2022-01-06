@@ -11,8 +11,9 @@ console.log(document.querySelectorAll(".second"));
 console.log(document.querySelector("ol .third"));
 
 // 5) Give the section with an id of container the text "Hello!". 
-// ----document.querySelector("#container").innerHTML = "Hello!";
-//commented this out because it deletes everything
+const par = document.createElement("p");
+par.innerText = "Hello!";
+document.querySelector("#container").appendChild(par);
 
 // 6) Add the class main to the div with a class of footer.
 document.querySelector(".footer").classList.add("main")
