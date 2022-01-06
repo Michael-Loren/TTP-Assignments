@@ -12,6 +12,7 @@ body {
     display: flex;
     flex-direction: row;
     align-content: center;
+    flex-wrap: wrap;
     
 }
 section {
@@ -20,13 +21,24 @@ section {
     display: flex;
     flex-wrap: wrap;
 }
-.right{
-    background-color: royalblue;
-}
-.left{
+
+section.main.left{
     background-color: orange;
 }
+section.main.right  {
+    background-color: royalblue;
+}
 
+section.sub.bottom{
+    height: 30%;
+    width: 100%;
+}
+
+section.sub.bottom p {
+    font-size: 5rem;
+    font-style: var(test);
+    margin: auto;
+}
 
 button {
     margin: auto;
