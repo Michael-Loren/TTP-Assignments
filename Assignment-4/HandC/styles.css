@@ -1,0 +1,44 @@
+body {
+    background-color: darkgray;
+}
+
+
+.container {
+    background-color :red;
+    
+    width: 90vw;
+    height: 90vh;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    
+}
+.container section {
+    width: 50%;
+    height: 70%;
+    display: flex;
+}
+.right{
+    background-color: royalblue;
+}
+.left{
+    background-color: orange;
+}
+
+
+button {
+    margin: auto;
+    width: 80%;
+    height: 90%;
+    font-size: 500%;
+    border-radius: 2rem;
+    cursor:pointer;   
+    background-color: inherit;
+}
+button:hover{
+    filter: brightness(90%);   
+}
+button:active{
+    filter:brightness(100%);
+}
