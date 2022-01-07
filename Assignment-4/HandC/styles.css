@@ -79,3 +79,13 @@ margin: auto;
 form button {
     background-color: thistle;
 }
+
+#sphere input {
+    height: 5rem;
+    width: 50rem;
+    font-size: 5rem;
+}
+
+#calc {
+    width: 70%;
+}
