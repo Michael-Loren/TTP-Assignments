@@ -58,8 +58,18 @@ button:active{
 
 footer p {
     border-style: solid;
+    text-align: center; font-size: larger;
 }
 
 #subtext {
     font-size: 1rem;
+}
+
+form{
+margin: auto;
+
+}
+
+form button {
+    background-color: thistle;
 }
