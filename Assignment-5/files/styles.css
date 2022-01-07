@@ -1,11 +1,27 @@
+body {
+    background: #DE6262;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffb08c94, #dad9d9);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #d4c6bd, #e4cdcd); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 .box {
     width: 50%;
     height: 5rem;
-    
-    
+    border-width: 50px;
+    gap: 50px;
 }
-
-.content {
-    display: flexbox;
+.row {
+    width: 50%;
+    margin: auto;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+.btn {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.changecolor {
+    display: flex;
+    justify-content: center;
     
 }

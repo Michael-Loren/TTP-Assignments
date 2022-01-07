@@ -12,40 +12,41 @@
 
 <body>
     <!-- Fix this so that it's not stretching from one side of the screen to the other-->
-    <div class="mt-5 content">
+    <div class="mt-5 content ">
         <div class="row">
-            <div class="col-sm border border-dark box white">hello</div>
-            <div class="col-sm border border-dark box white">goodbye</div>
-            <div class="col-sm border border-dark box white"></div>
+            <div class="col-sm border border-3 border-dark box white"></div>
+            <div class="col-sm border border-3 border-dark box white"></div>
+            <div class="col-sm border border-3 border-dark box white"></div>
         </div>
 
         <div class="row">
-            <div class="col-sm border border-dark box white">something</div>
-            <div class="col-sm border border-dark box white"></div>
-            <div class="col-sm border border-dark box white"></div>
+            <div class="col-sm border border-3 border-dark box white"></div>
+            <div class="col-sm border border-3 border-dark box white"></div>
+            <div class="col-sm border border-3 border-dark box white"></div>
         </div>
 
         <div class="row">
-            <div class="col-sm border border-dark box white"></div>
-            <div class="col-sm border border-dark box white"></div>
-            <div class="col-sm border border-dark box white"></div>
+            <div class="col-sm border border-3 border-dark box white"></div>
+            <div class="col-sm border border-3 border-dark box white"></div>
+            <div class="col-sm border border-3 border-dark box white"></div>
 
         </div>
+        
     </div>
 
     <!-- BUTTONS: USE FLEXBOX TO ALIGN ITEMS NEATLY-->
-    <div class="">
+    <div class="btn control">
         <button type="button" class="btn btn-dark my-3 add-row">Add Row</button>
         <button type="button" class="btn btn-dark my-3 del-row">Delete Row</button>
         <button type="button" class="btn btn-dark my-3 add-col">Add Column</button>
         <button type="button" class="btn btn-dark my-3 del-col">Delete Column</button>
     </div>
-    <div class="">
+    <div class="btn reset">
         <button type="button" class="btn btn-danger m-3" onClick="window.location.reload();">Reset Page</button>
     </div>
 
     <!-- ADD FLEXBOX TO ALIGN ITEMS in the center-->
-    <div class="">
+    <div class="changecolor select">
         <h6 class=py-2>Select from the following list and click on a box to change the color!</h6>
         <form>
             <label for="">Choose a color:</label>
@@ -57,10 +58,10 @@
         </form>
     </div>
 
-    <div class="">
+    <div class="changecolor">
         <h6 class=py-2>Select a color and it will change all the <b>white</b> boxes to the color</h6>
         <form>
-            <label for="">Choose a color:</label>
+            <label for="py-2">Choose a color:</label>
             <select name="" id="">
                 <!-- Add more option values for different colors -->
                 <option value="red">Red</option>
@@ -69,7 +70,7 @@
         </form>
     </div>
 
-    <div class="">
+    <div class="changecolor">
         <h6 class=py-2>Select a color and it will change ALL the boxes to the color</h6>
         <form>
             <label for="">Choose a color:</label>
@@ -81,7 +82,7 @@
         </form>
     </div>
 
-    <div class="">
+    <div class="changecolor">
         <h6 class=py-2>Select a color and then drag the color over the boxes to change them!</h6>
         <form>
             <label for="">Choose a color:</label>
