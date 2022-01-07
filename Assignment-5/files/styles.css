@@ -20,3 +20,8 @@ body {
     justify-content: center;
     gap: 10px;
 }
+.changecolor {
+    display: flex;
+    justify-content: center;
+    
+}
