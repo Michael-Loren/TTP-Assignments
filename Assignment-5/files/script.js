@@ -13,7 +13,7 @@ const btnDelCol = buttons[4];
 const rows = document.getElementsByClassName("row");
 
 
-let colCount = 4; //change later
+let colCount = rows.length;
 
 
 
@@ -22,11 +22,12 @@ let colCount = 4; //change later
 
 
 
-function addRow(el){
+function addRow(el) {
     const rowdiv = document.createElement(`div`)
     rowdiv.className = "row";
+
     //populate empty row
-    for(let i = 0; i < colCount; i++){
+    for (let i = 0; i < colCount; i++) {
         const col = document.createElement(`div`);
         col.className = "col-sm border border-3 border-dark box white";
         rowdiv.appendChild(col) //append columns
@@ -39,14 +40,31 @@ function addRow(el){
 console.log(rows);
 
 
+function addCol() {
+    for (let i = 0; i < rows.length; i++) {
+        const col = document.createElement(`div`);
+        col.className = "col-sm border border-3 border-dark box white";
+        rows[i].appendChild(col);
 
+    }
+    colCount++;
+}
+
+function delCol() {
+    for (let i = 0; i < rows.length; i++) {
+        rows[i].removeChild(rows[i].lastElementChild);
+    }
+    colCount--;
+}
 
 
 console.log(`colCount: ${colCount}`);
 
 
-btnAddRow.addEventListener("click", () => {
-    addRow(document.querySelector(".content"))
-} )
+btnAddRow.addEventListener("click", () => addRow(document.querySelector(".content")))
 
-btnDelRow.addEventListener("click", () => rows[rows.length-1].remove())
+btnDelRow.addEventListener("click", () => rows[rows.length - 1].remove())
+
+btnAddCol.addEventListener("click", () => addCol());
+
+btnDelCol.addEventListener("click", () => delCol());
