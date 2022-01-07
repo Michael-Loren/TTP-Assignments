@@ -1,0 +1,11 @@
+.box {
+    width: 50%;
+    height: 5rem;
+    
+    
+}
+
+.content {
+    display: flexbox;
+    
+}
