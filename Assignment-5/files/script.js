@@ -46,6 +46,7 @@ function addCol() {
 
     }
     colCount++;
+    init("background-color: green");
 }
 
 function delCol() {
@@ -55,10 +56,11 @@ function delCol() {
     colCount--;
 }
 
+//I hate this function so much
 function init(style){
     for(let i = 0; i < rows.length; i++){
         for(let j = 0; j < rows[i].children.length; j++){
-            rows[i].children[j].removeEventListener("click", () => rows[i].children[j].setAttribute("style", style) );
+            rows[i].children[j].removeEventListener("click", () => rows[i].children[j].setAttribute("style", style));
             rows[i].children[j].addEventListener("click", () => rows[i].children[j].setAttribute("style", style));
             
         }
