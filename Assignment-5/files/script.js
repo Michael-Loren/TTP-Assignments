@@ -17,8 +17,7 @@ const rows = document.getElementsByClassName("row");
 
 let colCount = rows.length;
 
-
-
+let currentState = "red";
 
 function addRow(el) {
     const rowdiv = document.createElement(`div`)
@@ -33,11 +32,12 @@ function addRow(el) {
     }
     
     el.appendChild(rowdiv);
-    init("click", "background-color: green");
+    init("click", currentState);
 }
 
 
 console.log(rows);
+
 
 
 function addCol() {
@@ -48,7 +48,7 @@ function addCol() {
 
     }
     colCount++;
-    init("click", "background-color: green");
+    init("click", currentState);
 }
 
 function delCol() {
@@ -62,14 +62,14 @@ function delCol() {
 function init(eventType, style){
     for(let i = 0; i < rows.length; i++){
         for(let j = 0; j < rows[i].children.length; j++){
-            rows[i].children[j].removeEventListener(eventType, () => rows[i].children[j].setAttribute("style", style));
-            rows[i].children[j].addEventListener(eventType, () => rows[i].children[j].setAttribute("style", style));
+            rows[i].children[j].removeEventListener(eventType, () => rows[i].children[j].setAttribute("style", `background-color:${style}`));
+            rows[i].children[j].addEventListener(eventType, () => rows[i].children[j].setAttribute("style", `background-color:${style}`));
             
         }
     }
 }
 
-init("click", "background-color: green");
+init("click", currentState); //initial init
 console.log(`colCount: ${colCount}`);
 
 
@@ -80,3 +80,8 @@ btnDelRow.addEventListener("click", () => rows[rows.length - 1].remove())
 btnAddCol.addEventListener("click", () => addCol());
 
 btnDelCol.addEventListener("click", () => delCol());
+
+selSingle.addEventListener("change", (ev) => {
+    currentState = ev.target.value;
+    init("click", currentState)
+})
