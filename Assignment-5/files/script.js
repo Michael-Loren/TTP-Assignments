@@ -5,8 +5,10 @@ const btnDelRow = buttons[2];
 const btnAddCol = buttons[3];
 const btnDelCol = buttons[4];
 
-
-
+const selSingle = document.getElementById("single");
+const selFill = document.getElementById("fill");
+const selAll = document.getElementById("all"); 
+const selDrag = document.getElementById("drag");
 
 
 
