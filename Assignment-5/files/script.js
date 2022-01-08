@@ -1,9 +1,9 @@
 const buttons = document.getElementsByClassName("btn");
 
-const btnAddRow = buttons[1];
-const btnDelRow = buttons[2];
-const btnAddCol = buttons[3];
-const btnDelCol = buttons[4];
+const btnAddRow = buttons[0];
+const btnDelRow = buttons[1];
+const btnAddCol = buttons[2];
+const btnDelCol = buttons[3];
 
 const selSingle = document.getElementById("single");
 const selFill = document.getElementById("fill");
