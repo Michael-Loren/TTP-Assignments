@@ -18,10 +18,6 @@ let colCount = rows.length;
 
 
 
-
-
-
-
 function addRow(el) {
     const rowdiv = document.createElement(`div`)
     rowdiv.className = "row";
@@ -30,10 +26,12 @@ function addRow(el) {
     for (let i = 0; i < colCount; i++) {
         const col = document.createElement(`div`);
         col.className = "col-sm border border-3 border-dark box white";
+        
         rowdiv.appendChild(col) //append columns
     }
+    
     el.appendChild(rowdiv);
-
+    init("background-color: green");
 }
 
 
@@ -57,7 +55,17 @@ function delCol() {
     colCount--;
 }
 
+function init(style){
+    for(let i = 0; i < rows.length; i++){
+        for(let j = 0; j < rows[i].children.length; j++){
+            rows[i].children[j].removeEventListener("click", () => rows[i].children[j].setAttribute("style", style) );
+            rows[i].children[j].addEventListener("click", () => rows[i].children[j].setAttribute("style", style));
+            
+        }
+    }
+}
 
+init("background-color: green");
 console.log(`colCount: ${colCount}`);
 
 
