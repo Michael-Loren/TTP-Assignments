@@ -10,6 +10,9 @@ const selFill = document.getElementById("fill");
 const selAll = document.getElementById("all");
 const selDrag = document.getElementById("drag");
 
+const btnFillEmpty = document.getElementById("fillempty");
+const btnFillAll = document.getElementById("fillall");
+
 
 let mouseheld = false;
 
@@ -119,3 +122,19 @@ selDrag.addEventListener("change", (ev) => {
     init("mouseenter", currentState)  
 })
 
+btnFillAll.addEventListener("click", () => {
+    for (let i = 0; i < rows.length; i++) {
+        for (let j = 0; j < rows[i].children.length; j++) {
+            rows[i].children[j].setAttribute("style", `background-color:${selAll.value}`)
+        }
+    }
+})
+
+btnFillEmpty.addEventListener("click", () => {
+    for (let i = 0; i < rows.length; i++) {
+        for (let j = 0; j < rows[i].children.length; j++) {
+            console.log(rows[i].children[j].getAttribute("style"))
+            rows[i].children[j].setAttribute("style", `background-color:${selFill.value}`)
+        }
+    }
+})
