@@ -15,11 +15,12 @@ let mouseheld = false;
 
 document.addEventListener("mousedown", () => {
     mouseheld = true;
-    
+    console.log(`Mouse: ${mouseheld}`)
 })
 document.addEventListener("mouseup", () => {
     mouseheld = false;
-    
+        console.log(`Mouse: ${mouseheld}`)
+
 })
 
 const rows = document.getElementsByClassName("row");
@@ -75,7 +76,7 @@ function init(eventType, style) {
             rows[i].children[j].removeEventListener(eventType, () => {
 
                 if (eventType === "mouseenter" && mouseheld){
-                    console.log(mouseheld);
+                    console.log("Function called");
                     rows[i].children[j].setAttribute("style", `background-color:${style}`)
                 }
                 else if (eventType != "mouseenter")
@@ -84,17 +85,19 @@ function init(eventType, style) {
             
             rows[i].children[j].addEventListener(eventType, () => {
                 if (eventType === "mouseenter" && mouseheld){
-                    console.log(mouseheld);
+                    console.log("Function called");
                     rows[i].children[j].setAttribute("style", `background-color:${style}`)
                 }
                 else if (eventType != "mouseenter")
                 rows[i].children[j].setAttribute("style", `background-color:${style}`)
-            }); //update to new
+            }); 
         }
     }
 }
 
-init("click", currentState); //initial init
+
+init("click", currentState);
+init("mouseenter", currentState); //initial init
 console.log(`colCount: ${colCount}`);
 
 
@@ -113,5 +116,6 @@ selSingle.addEventListener("change", (ev) => {
 
 selDrag.addEventListener("change", (ev) => {
     currentState = ev.target.value;
-    init("mouseenter", currentState)  //this needs to also happen with mouseenter
+    init("mouseenter", currentState)  
 })
+
