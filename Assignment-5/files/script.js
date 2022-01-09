@@ -10,17 +10,17 @@ const selFill = document.getElementById("fill");
 const selAll = document.getElementById("all");
 const selDrag = document.getElementById("drag");
 
+const btnFillEmpty = document.getElementById("fillempty");
+const btnFillAll = document.getElementById("fillall");
+
 
 let mouseheld = false;
 
 document.addEventListener("mousedown", () => {
     mouseheld = true;
-    console.log(`Mouse: ${mouseheld}`)
 })
 document.addEventListener("mouseup", () => {
     mouseheld = false;
-        console.log(`Mouse: ${mouseheld}`)
-
 })
 
 const rows = document.getElementsByClassName("row");
@@ -44,10 +44,10 @@ function addRow(el) {
 
     el.appendChild(rowdiv);
     init("click", currentState);
+    init("mouseenter", currentState);
 }
 
 
-console.log(rows);
 
 
 
@@ -60,6 +60,7 @@ function addCol() {
     }
     colCount++;
     init("click", currentState);
+    init("mouseenter", currentState);
 }
 
 function delCol() {
@@ -70,27 +71,36 @@ function delCol() {
 }
 
 //I hate this function so much
+
+/**
+*
+* This function literally just iterates through every cell in the matrix and adds event listeners to everything. It is extremely unoptimized and comparable to bubble sort in the sense that
+* it takes less code but more steps as a result.
+* @param eventType string representing event
+* @param style string representing actual background color
+* 
+*/
 function init(eventType, style) {
     for (let i = 0; i < rows.length; i++) {
         for (let j = 0; j < rows[i].children.length; j++) {
             rows[i].children[j].removeEventListener(eventType, () => {
 
-                if (eventType === "mouseenter" && mouseheld){
-                    console.log("Function called");
+                if (eventType === "mouseenter" && mouseheld) {
+
                     rows[i].children[j].setAttribute("style", `background-color:${style}`)
                 }
                 else if (eventType != "mouseenter")
-                rows[i].children[j].setAttribute("style", `background-color:${style}`)
+                    rows[i].children[j].setAttribute("style", `background-color:${style}`)
             });
-            
+
             rows[i].children[j].addEventListener(eventType, () => {
-                if (eventType === "mouseenter" && mouseheld){
-                    console.log("Function called");
+                if (eventType === "mouseenter" && mouseheld) {
+
                     rows[i].children[j].setAttribute("style", `background-color:${style}`)
                 }
                 else if (eventType != "mouseenter")
-                rows[i].children[j].setAttribute("style", `background-color:${style}`)
-            }); 
+                    rows[i].children[j].setAttribute("style", `background-color:${style}`)
+            });
         }
     }
 }
@@ -98,7 +108,7 @@ function init(eventType, style) {
 
 init("click", currentState);
 init("mouseenter", currentState); //initial init
-console.log(`colCount: ${colCount}`);
+
 
 
 btnAddRow.addEventListener("click", () => addRow(document.querySelector(".content")))
@@ -116,6 +126,22 @@ selSingle.addEventListener("change", (ev) => {
 
 selDrag.addEventListener("change", (ev) => {
     currentState = ev.target.value;
-    init("mouseenter", currentState)  
+    init("mouseenter", currentState)
 })
 
+btnFillAll.addEventListener("click", () => {
+    for (let i = 0; i < rows.length; i++) {
+        for (let j = 0; j < rows[i].children.length; j++) {
+            rows[i].children[j].setAttribute("style", `background-color:${selAll.value}`)
+        }
+    }
+})
+
+btnFillEmpty.addEventListener("click", () => {
+    for (let i = 0; i < rows.length; i++) {
+        for (let j = 0; j < rows[i].children.length; j++) {
+            if (rows[i].children[j].getAttribute("style") == 'background-color:Transparent' || rows[i].children[j].getAttribute("style") == null)
+                rows[i].children[j].setAttribute("style", `background-color:${selFill.value}`)
+        }
+    }
+})
