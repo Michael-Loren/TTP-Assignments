@@ -8,6 +8,7 @@ body {
     height: 5rem;
     border-width: 50px;
     gap: 50px;
+    background-color: transparent;
 }
 .row {
     width: 50%;
