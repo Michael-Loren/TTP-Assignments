@@ -5,19 +5,26 @@ import './App.css';
 
 function App() {
   const [searchText, setSearchText] = useState("");
-
+  const [displayText, setDisplayText] = useState("");
   function onChange(event){
     setSearchText(event.target.value);
   }
+
+  function onClick(event){
+    setDisplayText(searchText);
+    event.preventDefault();
+  }
   
+  
+
   return (
     <div className="App">
       <header className="App-header">
         <p>Search for a gif:</p>
-        <SearchForm onChange={onChange} />
+        <SearchForm onClick={onClick} onChange={onChange} />
       </header>
       <main>
-        <Card content={searchText}/>
+        <Card content={displayText}/>
       </main>
     </div>
   );

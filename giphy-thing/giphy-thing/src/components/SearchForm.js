@@ -4,7 +4,9 @@ export default function SearchForm(props) {
     
     return (
         <div>
-            <input type="text" onChange = {props.onChange} placeholder="Enter something"></input>
+            <form>
+            <input type="text" onChange={props.onChange} placeholder="Enter something"></input> <button type="submit" onClick={props.onClick}>Search</button>
+            </form>
         </div>
     )
 }
