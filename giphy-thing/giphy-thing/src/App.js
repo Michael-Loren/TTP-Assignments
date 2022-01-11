@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import SearchForm from './components/SearchForm.js'
+import Card from './components/Card.js'
+import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
+  const [searchText, setSearchText] = useState("");
+
+  function onChange(event){
+    setSearchText(event.target.value);
+  }
+  
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>Search for a gif:</p>
+        <SearchForm onChange={onChange} />
       </header>
+      <main>
+        <Card content={searchText}/>
+      </main>
     </div>
   );
 }
