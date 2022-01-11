@@ -2,10 +2,10 @@ import React from 'react'
 
 export default function Card(props) {
     
-console.log(props.url);
+console.log(props.data);
     return (
         <div>
-            <img src={props.url.images.downsized_medium.url}></img>
+            <img src={props.data.images.downsized.url}></img>
         </div>
     )
 }

@@ -21,7 +21,6 @@ function App() {
     try {const response = await fetch(`http://api.giphy.com/v1/gifs/trending?api_key=${process.env.REACT_APP_API_KEY}&limit=9`)
     const data = await response.json();
     setTrendQuery(data.data);
-    console.log(data.data[0]);
     setLoading(false);
   }
   catch (error){
@@ -42,7 +41,7 @@ function App() {
       </header>
       <main>
         {
-        !loading ? trendQuery.map((data) => {return <Card url={data}/>})
+        !loading ? trendQuery.map((data) => {return <Card data={data}/>})
         : <p>Didn't work</p>
         }
       </main>
