@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Home() {
+export default function Other(props) {
     return (
         <div>
-            <h2>world</h2>
+            <h2>{props.content}</h2>
         </div>
     )
 }
