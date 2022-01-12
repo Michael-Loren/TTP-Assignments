@@ -19,10 +19,11 @@ function App() {
     event.preventDefault();
   }
   async function fetchAPI() {
+    setLoading(true);
     try {
       const response = await fetch(
         hasClicked
-          ? `http://api.giphy.com/v1/gifs/search?q=${displayText}&api_key=${process.env.REACT_APP_API_KEY}&limit=9`
+          ? displayText === "" ? `https://api.giphy.com/v1/gifs/random?api_key=${process.env.REACT_APP_API_KEY}` : `http://api.giphy.com/v1/gifs/search?q=${displayText}&api_key=${process.env.REACT_APP_API_KEY}&limit=9`
           : `http://api.giphy.com/v1/gifs/trending?api_key=${process.env.REACT_APP_API_KEY}&limit=9`
       );
       console.log(displayText);
@@ -46,7 +47,7 @@ function App() {
       </header>
       <main>
         {!loading ? (
-          gifQuery.map((data) => {
+          gifQuery.map((data) => { //error happens here. giphy random doesn't work with map
             return <Card data={data} />;
           })
         ) : (
