@@ -7,7 +7,7 @@ function App() {
   const [searchText, setSearchText] = useState("");
   const [displayText, setDisplayText] = useState("");
   const [gifQuery, setGifQuery] = useState([]);
-  const [hasClicked, setHasClicked] = useState(false)
+  const [hasClicked, setHasClicked] = useState(false);
   const [loading, setLoading] = useState(true);
   function onChange(event) {
     setSearchText(event.target.value);
@@ -18,27 +18,26 @@ function App() {
     setDisplayText(searchText);
     event.preventDefault();
   }
-  async function fetchAPI(){
-  try {
-    const response = await fetch(
-      hasClicked ? `http://api.giphy.com/v1/gifs/search?q=${displayText}&api_key=${process.env.REACT_APP_API_KEY}&limit=9`: `http://api.giphy.com/v1/gifs/trending?api_key=${process.env.REACT_APP_API_KEY}&limit=9`
-    );
-    console.log(hasClicked);
-    const data = await response.json();
-    setGifQuery(data.data); 
-    setLoading(false);
-    
-  } catch (error) {
-    console.log(error);
+  async function fetchAPI() {
+    try {
+      const response = await fetch(
+        hasClicked
+          ? `http://api.giphy.com/v1/gifs/search?q=${displayText}&api_key=${process.env.REACT_APP_API_KEY}&limit=9`
+          : `http://api.giphy.com/v1/gifs/trending?api_key=${process.env.REACT_APP_API_KEY}&limit=9`
+      );
+      console.log(displayText);
+      const data = await response.json();
+      setGifQuery(data.data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   }
-  
-}
 
   useEffect(async () => {
     fetchAPI();
-  }, [displayText]);
+  }, [displayText]); //holy shit this works way better than I thought it would
 
-  //console.log("Hello", trendQuery[0].images.downsized_medium.url)
   return (
     <div className="App">
       <header className="App-header">
