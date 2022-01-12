@@ -6,21 +6,20 @@ import Other from "./components/Other";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-      <h1>Hello!</h1>
+      <header className="App-header">      
       
         <BrowserRouter>
-        
+        <nav>
+        <Link to="/Home" >Home </Link>
+        <br />
+        <Link to="/Other" >Other</Link>
+        </nav>  
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Home" element={<Home />} />
             <Route path="/Other" element={<Other content="sup"/>} />
           </Routes>
-          <nav>
-        <Link to="/Home" >Home </Link>
-        <br />
-        <Link to="/Other" >Other</Link>
-        </nav>
+          
         </BrowserRouter>
       </header>
     </div>
