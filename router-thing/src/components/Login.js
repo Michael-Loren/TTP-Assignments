@@ -37,8 +37,10 @@ function LogIn(props) {
             <label htmlFor="password">Password</label>
             <input type="password" name="password" />
           </div>
-          <button>Log In</button>
+          <button type="submit">Log In</button>
         </form>
       </div>
     )
   }
+
+export default LogIn

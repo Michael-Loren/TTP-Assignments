@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import UserProfile from './components/UserProfile';
+import LogIn from './components/Login';
 
 function App() {
 
@@ -19,6 +20,7 @@ const mockLogIn = (logInInfo) => {
           <Routes>
             <Route path="/" element={<Home accountBalance={accountBalance}/>}/>
             <Route path="/userProfile" element={<UserProfile userName={currentUser.userName} memberSince={currentUser.memberSince}  />}/>
+            <Route path="/login" element={<LogIn mockLogIn={mockLogIn}/>}  />
           </Routes>
         </BrowserRouter>
     );
