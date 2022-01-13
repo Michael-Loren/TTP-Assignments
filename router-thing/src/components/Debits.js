@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { Link } from "react-router-dom";
 export default function Debits() {
   const [debits, setDebits] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -22,6 +22,7 @@ export default function Debits() {
   return (
     <>
       <h1>Debits</h1>
+      <nav><Link to="/">Home</Link> <Link to="/userprofile">User Profile</Link></nav>
       <table>
         <thead>
           <tr>
@@ -35,7 +36,7 @@ export default function Debits() {
             debits.map((debit) => (
               <tr>
                 <td>{debit.description}</td>
-                <td>{debit.amount}</td>
+                <td>${debit.amount}</td>
                 <td>{debit.date}</td>
               </tr>
             ))
