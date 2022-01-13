@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import UserProfile from './components/UserProfile';
 import LogIn from './components/Login';
+import Debits from './components/Debits';
 
 function App() {
 
@@ -15,12 +16,14 @@ const mockLogIn = (logInInfo) => {
   newUser.userName = logInInfo.userName
   setCurrentUser(newUser)
 }
+
     return (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home accountBalance={accountBalance}/>}/>
             <Route path="/userProfile" element={<UserProfile userName={currentUser.userName} memberSince={currentUser.memberSince}  />}/>
             <Route path="/login" element={<LogIn mockLogIn={mockLogIn}/>}  />
+            <Route path="/debits" element={<Debits/>}/>
           </Routes>
         </BrowserRouter>
     );
