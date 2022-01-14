@@ -25,8 +25,8 @@ export default function Debits(props) {
       let total = 0;
       data.map((entry) => (total += entry.amount));
       setTotalDebits(total);
-      
-      setAccountBalance(totalCredits - totalDebits);
+
+      setAccountBalance(totalCredits - totalDebits); //update account balance
       console.log(totalDebits);
       setLoading(false);
     } catch (e) {
@@ -45,7 +45,7 @@ export default function Debits(props) {
 
     setDebits(updateDebits);
     setTotalDebits(totalDebits + amountText); //add new value
-    setAccountBalance(totalCredits - totalDebits);
+    setAccountBalance(totalCredits - totalDebits); //update account balance
     console.log(totalDebits);
     e.preventDefault();
   }

@@ -25,7 +25,7 @@ export default function Credits(props) {
       let total = 0;
       data.map((entry) => (total += entry.amount));
       setTotalCredits(total);
-      setAccountBalance(totalCredits - totalDebits);
+      setAccountBalance(totalCredits - totalDebits); //update account balance 
       console.log(totalCredits);
 
       setLoading(false);
@@ -45,7 +45,7 @@ export default function Credits(props) {
 
     setCredits(updateCredits);
     setTotalCredits(totalCredits + amountText); //add new value
-    setAccountBalance(totalCredits - totalDebits);
+    setAccountBalance(totalCredits - totalDebits); //update account balance
     console.log(updateCredits);
     e.preventDefault();
   }
