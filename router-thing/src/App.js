@@ -10,14 +10,18 @@ import Credits from './components/Credits'
 
 function App() {
 
-const [accountBalance, setAccountBalance] = useState(14568.27)
-const [currentUser, setCurrentUser] = useState({ userName: "bob_loblaw", memberSince: '08/23/99' })
 
+const [currentUser, setCurrentUser] = useState({ userName: "bob_loblaw", memberSince: '08/23/99' })
+const [totalDebits, setTotalDebits] = useState(0);
+const [totalCredits, setTotalCredits] = useState(0);
+const [accountBalance, setAccountBalance] = useState(0)
 const mockLogIn = (logInInfo) => {
   const newUser = {...currentUser}
   newUser.userName = logInInfo.userName
   setCurrentUser(newUser)
 }
+
+
 
     return (
         <BrowserRouter>
@@ -25,8 +29,8 @@ const mockLogIn = (logInInfo) => {
             <Route path="/" element={<Home accountBalance={accountBalance}/>}/>
             <Route path="/userProfile" element={<UserProfile userName={currentUser.userName} memberSince={currentUser.memberSince}  />}/>
             <Route path="/login" element={<LogIn mockLogIn={mockLogIn}/>}  />
-            <Route path="/debits" element={<Debits accountBalance={accountBalance}/>}/>
-            <Route path="/credit" element={<Credits accountBalance={accountBalance}/>}/>
+            <Route path="/debits" element={<Debits totalCredits={totalCredits} setTotalCredits={setTotalCredits} totalDebits={totalDebits} setTotalDebits={setTotalDebits} setAccountBalance={setAccountBalance} accountBalance={accountBalance}/>}/>
+            <Route path="/credit" element={<Credits totalDebits={totalDebits} setTotalDebits={setTotalDebits} totalCredits={totalCredits} setTotalCredits={setTotalCredits} setAccountBalance={setAccountBalance} accountBalance={accountBalance}/>}/>
           </Routes>
         </BrowserRouter>
     );

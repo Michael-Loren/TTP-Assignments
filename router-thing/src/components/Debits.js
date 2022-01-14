@@ -1,18 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AddEntry from "./AddEntry";
-import AccountBalance from './AccountBalance';
+import AccountBalance from "./AccountBalance";
+
 export default function Debits(props) {
   const [debits, setDebits] = useState([]);
   const [loading, setLoading] = useState(true);
   const [descText, setDescText] = useState("");
   const [amountText, setAmountText] = useState(Number);
-
+  const {
+    totalDebits,
+    setTotalDebits,
+    totalCredits,
+    setTotalCredits,
+    accountBalance,
+    setAccountBalance,
+  } = props;
   async function getDebits() {
     try {
       const response = await fetch("https://moj-api.herokuapp.com/debits");
       const data = await response.json();
       setDebits(data);
+
+      let total = 0;
+      data.map((entry) => (total += entry.amount));
+      setTotalDebits(total);
+      
+      setAccountBalance(totalCredits - totalDebits);
+      console.log(totalDebits);
       setLoading(false);
     } catch (e) {
       console.log(e);
@@ -29,7 +44,9 @@ export default function Debits(props) {
     });
 
     setDebits(updateDebits);
-    console.log(updateDebits);
+    setTotalDebits(totalDebits + amountText); //add new value
+    setAccountBalance(totalCredits - totalDebits);
+    console.log(totalDebits);
     e.preventDefault();
   }
 
@@ -72,7 +89,7 @@ export default function Debits(props) {
         setDescText={setDescText}
         onSubmit={onSubmit}
       />
-      <AccountBalance accountBalance={props.accountBalance}/>
+      <AccountBalance accountBalance={accountBalance} />
     </>
   );
 }

@@ -1,19 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AddEntry from "./AddEntry";
-import AccountBalance from './AccountBalance';
+import AccountBalance from "./AccountBalance";
 
 export default function Credits(props) {
   const [credits, setCredits] = useState([]);
   const [loading, setLoading] = useState(true);
   const [descText, setDescText] = useState("");
   const [amountText, setAmountText] = useState(Number);
-
+  const {
+    totalDebits,
+    setTotalDebits,
+    totalCredits,
+    setTotalCredits,
+    accountBalance,
+    setAccountBalance,
+  } = props;
   async function getCredits() {
     try {
       const response = await fetch("https://moj-api.herokuapp.com/credits");
       const data = await response.json();
       setCredits(data);
+
+      let total = 0;
+      data.map((entry) => (total += entry.amount));
+      setTotalCredits(total);
+      setAccountBalance(totalCredits - totalDebits);
+      console.log(totalCredits);
+
       setLoading(false);
     } catch (e) {
       console.log(e);
@@ -30,6 +44,8 @@ export default function Credits(props) {
     });
 
     setCredits(updateCredits);
+    setTotalCredits(totalCredits + amountText); //add new value
+    setAccountBalance(totalCredits - totalDebits);
     console.log(updateCredits);
     e.preventDefault();
   }
@@ -73,7 +89,7 @@ export default function Credits(props) {
         setDescText={setDescText}
         onSubmit={onSubmit}
       />
-      <AccountBalance accountBalance={props.accountBalance}/>
+      <AccountBalance accountBalance={accountBalance} />
     </>
   );
 }
