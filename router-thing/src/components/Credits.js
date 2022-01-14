@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AddEntry from "./AddEntry";
-export default function Credits() {
+import AccountBalance from './AccountBalance';
+
+export default function Credits(props) {
   const [credits, setCredits] = useState([]);
   const [loading, setLoading] = useState(true);
   const [descText, setDescText] = useState("");
@@ -71,6 +73,7 @@ export default function Credits() {
         setDescText={setDescText}
         onSubmit={onSubmit}
       />
+      <AccountBalance accountBalance={props.accountBalance}/>
     </>
   );
 }

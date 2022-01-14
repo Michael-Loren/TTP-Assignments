@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AddEntry from "./AddEntry";
-export default function Debits() {
+import AccountBalance from './AccountBalance';
+export default function Debits(props) {
   const [debits, setDebits] = useState([]);
   const [loading, setLoading] = useState(true);
   const [descText, setDescText] = useState("");
@@ -71,6 +72,7 @@ export default function Debits() {
         setDescText={setDescText}
         onSubmit={onSubmit}
       />
+      <AccountBalance accountBalance={props.accountBalance}/>
     </>
   );
 }

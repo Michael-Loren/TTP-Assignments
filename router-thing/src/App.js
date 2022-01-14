@@ -25,8 +25,8 @@ const mockLogIn = (logInInfo) => {
             <Route path="/" element={<Home accountBalance={accountBalance}/>}/>
             <Route path="/userProfile" element={<UserProfile userName={currentUser.userName} memberSince={currentUser.memberSince}  />}/>
             <Route path="/login" element={<LogIn mockLogIn={mockLogIn}/>}  />
-            <Route path="/debits" element={<Debits/>}/>
-            <Route path="/credit" element={<Credits/>}/>
+            <Route path="/debits" element={<Debits accountBalance={accountBalance}/>}/>
+            <Route path="/credit" element={<Credits accountBalance={accountBalance}/>}/>
           </Routes>
         </BrowserRouter>
     );
