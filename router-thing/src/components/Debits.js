@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import AddEntry  from "./AddEntry";
 export default function Debits() {
   const [debits, setDebits] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -22,7 +23,9 @@ export default function Debits() {
   return (
     <>
       <h1>Debits</h1>
-      <nav><Link to="/">Home</Link> <Link to="/userprofile">User Profile</Link></nav>
+      <nav>
+        <Link to="/">Home</Link> <Link to="/userprofile">User Profile</Link>
+      </nav>
       <table>
         <thead>
           <tr>
@@ -41,10 +44,13 @@ export default function Debits() {
               </tr>
             ))
           ) : (
-            <tr><td>didn't work</td></tr>
+            <tr>
+              <td>didn't work</td>
+            </tr>
           )}
         </tbody>
       </table>
+      <AddEntry />
     </>
   );
 }
