@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import AddEntry  from "./AddEntry";
+import AddEntry from "./AddEntry";
 export default function Debits() {
   const [debits, setDebits] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [descText, setDescText] = useState("");
+  const [amountText, setAmountText] = useState(Number);
 
   async function getDebits() {
     try {
@@ -14,6 +16,20 @@ export default function Debits() {
     } catch (e) {
       console.log(e);
     }
+  }
+
+  function onSubmit(e) {
+    const updateDebits = [...debits];
+    updateDebits.push({
+      id: "",
+      description: descText,
+      amount: amountText,
+      date: new Date().toISOString(),
+    });
+
+    setDebits(updateDebits);
+    console.log(updateDebits);
+    e.preventDefault();
   }
 
   useEffect(() => {
@@ -40,7 +56,7 @@ export default function Debits() {
               <tr>
                 <td>{debit.description}</td>
                 <td>${debit.amount}</td>
-                <td>{debit.date}</td>
+                <td>{debit.date.slice(0, 10)}</td>
               </tr>
             ))
           ) : (
@@ -50,7 +66,11 @@ export default function Debits() {
           )}
         </tbody>
       </table>
-      <AddEntry />
+      <AddEntry
+        setAmountText={setAmountText}
+        setDescText={setDescText}
+        onSubmit={onSubmit}
+      />
     </>
   );
 }

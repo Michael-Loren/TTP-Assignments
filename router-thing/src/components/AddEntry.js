@@ -1,13 +1,19 @@
-import React from 'react'
+import React from "react";
 
-export default function AddEntry() {
-    return (
-        <>
-            <form>
-                <input type="text" placeholder="Description"></input>
-                <input type="text" placeholder="Amount"></input>
-                <button type="submit">Add</button>
-                </form>
-        </>
-    )
+export default function AddEntry(props) {
+
+    const {setAmountText, setDescText, onSubmit} = props;
+
+    
+
+    
+  return (
+    <>
+      <form onSubmit={onSubmit}>
+        <input onChange={(e) => setDescText(e.target.value)} type="text" placeholder="Description"></input>
+        <input onChange={(e) => setAmountText(parseInt(e.target.value))} type="number" placeholder="Amount"></input>
+        <button type="submit">Add</button>
+      </form>
+    </>
+  );
 }
