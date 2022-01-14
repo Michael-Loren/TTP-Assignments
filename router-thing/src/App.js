@@ -6,11 +6,13 @@ import Home from './components/Home';
 import UserProfile from './components/UserProfile';
 import LogIn from './components/Login';
 import Debits from './components/Debits';
+import Credits from './components/Credits'
 
 function App() {
 
 const [accountBalance, setAccountBalance] = useState(14568.27)
 const [currentUser, setCurrentUser] = useState({ userName: "bob_loblaw", memberSince: '08/23/99' })
+
 const mockLogIn = (logInInfo) => {
   const newUser = {...currentUser}
   newUser.userName = logInInfo.userName
@@ -24,6 +26,7 @@ const mockLogIn = (logInInfo) => {
             <Route path="/userProfile" element={<UserProfile userName={currentUser.userName} memberSince={currentUser.memberSince}  />}/>
             <Route path="/login" element={<LogIn mockLogIn={mockLogIn}/>}  />
             <Route path="/debits" element={<Debits/>}/>
+            <Route path="/credit" element={<Credits/>}/>
           </Routes>
         </BrowserRouter>
     );

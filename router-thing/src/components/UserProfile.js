@@ -7,7 +7,7 @@ function UserProfile(props) {
         <div>
           <h1>User Profile</h1>
 
-          <nav><Link to="/">Home</Link> <Link to="/debits">Debits</Link></nav>
+          <nav><Link to="/">Home</Link> <Link to="/debits">Debits</Link> <Link to="/credit">Credits</Link></nav>
           
           <div>Username: {props.userName}</div>
           <div>Member Since: {props.memberSince}</div>
