@@ -19,7 +19,13 @@ export default function Debits() {
   }
 
   function onSubmit(e){
-
+    
+    const updateDebits = [...debits];
+    updateDebits.push({id: "", description: descText, amount: amountText, date: new Date().toISOString()})
+    
+    setDebits(updateDebits);
+    console.log(updateDebits);
+    e.preventDefault();
   }
 
   useEffect(() => {
@@ -48,7 +54,7 @@ export default function Debits() {
               <tr>
                 <td>{debit.description}</td>
                 <td>${debit.amount}</td>
-                <td>{debit.date}</td>
+                <td>{debit.date.slice(0,10)}</td>
               </tr>
             ))
           ) : (
@@ -58,7 +64,7 @@ export default function Debits() {
           )}
         </tbody>
       </table>
-      <AddEntry descText={descText} amountText={amountText} onSubmit={onSubmit} />
+      <AddEntry setAmountText={setAmountText} setDescText={setDescText} onSubmit={onSubmit} />
     </>
   );
 }
