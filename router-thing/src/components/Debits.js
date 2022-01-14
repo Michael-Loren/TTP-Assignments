@@ -4,6 +4,8 @@ import AddEntry  from "./AddEntry";
 export default function Debits() {
   const [debits, setDebits] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [descText, setDescText] = useState("")
+  const [amountText, setAmountText] = useState(Number)
 
   async function getDebits() {
     try {
@@ -16,9 +18,15 @@ export default function Debits() {
     }
   }
 
+  function onSubmit(e){
+
+  }
+
   useEffect(() => {
     getDebits();
   }, []);
+
+  
 
   return (
     <>
@@ -50,7 +58,7 @@ export default function Debits() {
           )}
         </tbody>
       </table>
-      <AddEntry />
+      <AddEntry descText={descText} amountText={amountText} onSubmit={onSubmit} />
     </>
   );
 }
