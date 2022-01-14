@@ -11,22 +11,33 @@ function App() {
   const [loading, setLoading] = useState(true);
   function onChange(event) {
     setSearchText(event.target.value);
+    
+      console.log(!event.target.value)
+    
   }
 
   function onClick(event) {
     setHasClicked(true);
     setDisplayText(searchText);
+    if (!displayText.trim()){
+      fetchAPI();
+    }
     event.preventDefault();
   }
   async function fetchAPI() {
     try {
       const response = await fetch(
         hasClicked
-          ? `http://api.giphy.com/v1/gifs/search?q=${displayText}&api_key=${process.env.REACT_APP_API_KEY}&limit=9`
+          ? `http://api.giphy.com/v1/gifs/${displayText ? `search?q=${displayText}` : "random?"
+            }&api_key=${process.env.REACT_APP_API_KEY}&limit=9`
           : `http://api.giphy.com/v1/gifs/trending?api_key=${process.env.REACT_APP_API_KEY}&limit=9`
       );
+
       console.log(displayText);
       const data = await response.json();
+      if (!data.data.length){
+        data.data = [data.data];
+      }
       setGifQuery(data.data);
       setLoading(false);
     } catch (error) {
@@ -45,7 +56,8 @@ function App() {
         <SearchForm onClick={onClick} onChange={onChange} />
       </header>
       <main>
-        {!loading ? (
+        {
+        !loading ? (
           gifQuery.map((data) => {
             return <Card data={data} />;
           })
