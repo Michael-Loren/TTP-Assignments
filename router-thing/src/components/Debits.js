@@ -4,8 +4,7 @@ import AddEntry from "./AddEntry";
 import AccountBalance from "./AccountBalance";
 
 export default function Debits(props) {
-  const [debits, setDebits] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const {debits, setDebits} = props;
   const [descText, setDescText] = useState("");
   const [amountText, setAmountText] = useState(Number);
   const {
@@ -16,23 +15,7 @@ export default function Debits(props) {
     accountBalance,
     setAccountBalance,
   } = props;
-  async function getDebits() {
-    try {
-      const response = await fetch("https://moj-api.herokuapp.com/debits");
-      const data = await response.json();
-      setDebits(data);
-
-      let total = 0;
-      data.map((entry) => (total += entry.amount));
-      setTotalDebits(total);
-
-      setAccountBalance(totalCredits - totalDebits); //update account balance
-      console.log(totalDebits);
-      setLoading(false);
-    } catch (e) {
-      console.log(e);
-    }
-  }
+  
 
   function onSubmit(e) {
     const updateDebits = [...debits];
@@ -46,13 +29,9 @@ export default function Debits(props) {
     setDebits(updateDebits);
     setTotalDebits(totalDebits + amountText); //add new value
     setAccountBalance(totalCredits - totalDebits); //update account balance
-    console.log(totalDebits);
+    console.log("Hello");
     e.preventDefault();
   }
-
-  useEffect(() => {
-    getDebits();
-  }, []);
 
   return (
     <>
@@ -69,7 +48,7 @@ export default function Debits(props) {
           </tr>
         </thead>
         <tbody>
-          {!loading ? (
+          {debits && (
             debits.map((debit) => (
               <tr>
                 <td>{debit.description}</td>
@@ -77,10 +56,6 @@ export default function Debits(props) {
                 <td>{debit.date.slice(0, 10)}</td>
               </tr>
             ))
-          ) : (
-            <tr>
-              <td>didn't work</td>
-            </tr>
           )}
         </tbody>
       </table>
