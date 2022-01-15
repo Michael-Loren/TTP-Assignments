@@ -51,8 +51,8 @@ function App() {
 
       let total = 0;
       data.map((entry) => (total += entry.amount));
-      setTotalCredits(total);
-      setAccountBalance(totalCredits - totalDebits); //update account balance
+      await setTotalCredits(total);
+      await setAccountBalance(totalCredits - totalDebits); //update account balance
       console.log(totalCredits);
 
     } catch (e) {
@@ -63,7 +63,7 @@ function App() {
   useEffect(() => {
     getDebits();
     getCredits();
-  }, [totalDebits, totalCredits]);
+  }, []);
 
   return (
     <BrowserRouter>
